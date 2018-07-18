@@ -4,4 +4,4 @@ export HUB="gcr.io/istio-release"
 export TAG="1.0.0-snapshot.1"
 export ISTIO_REL_URL="https://storage.googleapis.com/istio-release-pipeline-data/prerelease/1.0.0-snapshot.1"
 # Timestamp allows rerun on the same artifacts
-export TIME=1531892713612928182
+export TIME=1531939378098113271
