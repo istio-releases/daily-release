@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copyright 2017 Istio Authors
+# Copyright 2018 Istio Authors
 
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -24,19 +24,13 @@ set -x
 function cleanup() {
   # log gathering
   cp -a /tmp/istio_upgrade_test/* ${ARTIFACTS_DIR}
-
   # Mason cleanup
   mason_cleanup
   cat "${FILE_LOG}"
 }
 
-function download_untar_istio_release() {
-  # Download artifacts
-  LINUX_DIST_URL="${1}/istio-${2}-linux.tar.gz"
-
-  wget  -q "${LINUX_DIST_URL}"
-  tar -xzf "istio-${2}-linux.tar.gz"
-}
+# Helper functions
+source "prow/utils.sh"
 
 echo "Testing Upgrade from ${HUB}/${SOURCE_VERSION} to ${HUB}/${TARGET_VERSION}"
 
@@ -47,21 +41,7 @@ OWNER='upgrade-tests'
 INFO_PATH="$(mktemp /tmp/XXXXX.boskos.info)"
 FILE_LOG="$(mktemp /tmp/XXXXX.boskos.log)"
 
-# Artifact dir is hardcoded in Prow - boostrap to be in first repo checked out
-ARTIFACTS_DIR="${GOPATH}/src/github.com/istio-releases/daily-release/_artifacts"
-
-
-# Checkout istio at the greenbuild
-mkdir -p ${GOPATH}/src/istio.io
-pushd    ${GOPATH}/src/istio.io
-git clone -n https://github.com/istio/istio.git
-
-pushd istio
-#from now on we are in ${GOPATH}/src/istio.io/istio dir
-
-#git checkout $SHA
-#Hack to use the latest test script for now.
-git checkout master
+git_clone_istio
 
 source "prow/mason_lib.sh"
 source "prow/cluster_lib.sh"
