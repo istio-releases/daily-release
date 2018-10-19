@@ -60,8 +60,7 @@ function test_helm_files() {
 
 download_untar_istio_release "${ISTIO_REL_URL}/docker.io" "${TAG}" docker.io
 test_istioctl_version docker.io/istio-${TAG}/bin/istioctl "docker.io/istio" "${TAG}"
-# TODO The expected hub should be docker.io/istio instead. Update after fix
-test_helm_files docker.io/istio-${TAG} "docker.io/istio" "${TAG}"
+test_helm_files docker.io/istio-${TAG} "${HUB}" "${TAG}"
 
 download_untar_istio_release "${ISTIO_REL_URL}/gcr.io" "${TAG}" gcr.io
 test_istioctl_version gcr.io/istio-${TAG}/bin/istioctl "gcr.io/istio-release" "${TAG}"
