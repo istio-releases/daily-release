@@ -16,4 +16,5 @@ export CB_PIPELINE_TYPE=daily
 export CB_PUSH_DOCKER_HUBS=gcr.io/istio-release
 export CB_TEST_GITHUB_TOKEN_FILE_PATH=
 export CB_VERIFY_CONSISTENCY=false
+#fake
 export CB_VERSION=krishna-test1
