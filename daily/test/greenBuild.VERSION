@@ -2,7 +2,7 @@
 
 export SHA="dce455456d77ca5af34ba5848f9704577349c6bd"
 export HUB="gcr.io/istio-release"
-export TAG="krishna-test-20181130-09-15"
-export ISTIO_REL_URL="https://storage.googleapis.com/istio-release-pipeline-data/daily-build/krishna-test-20181130-09-15"
+export TAG="krishna-test-20181201-09-15"
+export ISTIO_REL_URL="https://storage.googleapis.com/istio-release-pipeline-data/daily-build/krishna-test-20181201-09-15"
 # Timestamp allows rerun on the same artifacts
-export TIME=1543570395090340180
+export TIME=1543656793386596302
